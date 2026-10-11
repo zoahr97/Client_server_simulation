@@ -1,0 +1,112 @@
+<!--
+קובץ אחיד שמכיל את כל העמודים בתבניות נפרדות
+כאשר בכל פעם נטענת אחת התבניות בהתאם לנתיב  הנוכחי
+-->
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div id="app"></div>
+
+<!-- התחברות -->
+<template id="loginTemplate">
+    <div class="form-container">
+        <h2>התחברות</h2>
+        <input type="text" id="login-username" placeholder="שם משתמש"><br><br>
+        <input type="password" id="login-password" placeholder="סיסמה"><br><br>
+        <button id="login-submit">כניסה</button>
+        <button id="to-register">להרשמה</button>
+    </div>
+</template>
+
+<!-- הרשמה -->
+<template id="registerTemplate">
+    <div class="form-container">
+        <h2>הרשמה</h2>
+        <input type="text" id="reg-username" placeholder="שם משתמש"><br><br>
+        <input type="password" id="reg-password" placeholder="סיסמה"><br><br>
+        <input type="tel" id="reg-phone" placeholder="טלפון"><br><br>
+        <input type="email" id="reg-email" placeholder="דוא&quot;ל"><br><br>
+        <button id="register-submit">הרשמה</button>
+        <button id="to-login">חזרה להתחברות</button>
+    </div>
+</template>
+
+<!-- אזור אישי -->
+<template id="personalAreaTemplate">
+    <!-- פרטי המשתמש -->
+    <aside>
+        <div id="user-info">
+            <p class="user-info-title">שם משתמש</p>
+            <p class="user-name-box"><span id="user-name"></span></p>
+            <p class="user-info-title">טלפון</p>
+            <p class="user-name-box"><span id="user-phone"></span></p>
+            <p class="user-info-title">דוא"ל</p>
+            <p class="user-name-box"><span id="user-email"></span></p>
+        </div>
+    </aside>
+    <main>
+        <!-- חיפוש ומיון -->
+        <div id="controls">
+            <input type="text" id="search" placeholder="חיפוש"> 
+            <select id="sort">
+                <option value="title">כותרת</option>
+                <option value="color">צבע</option>
+                <option value="date">תאריך</option>
+            </select>
+        </div>
+        <!-- הוספת פתק חדש -->
+        <div id="new-note-area">
+            <input type="text" id="new-note-title" placeholder="כותרת חדשה">
+            <label for="new-note-color" class="color-label">בחר צבע:</label>
+            <input type="color" id="new-note-color" value="#ffffff">
+            <button id="new-note">הוסף פתק חדש</button>
+        </div>
+        <!-- רשימת הפתקים -->
+        <div id="notes-list"></div>
+    </main>
+</template>
+
+<!-- תצוגה מלאה של פתק בודד -->
+<template id="noteViewTemplate">
+    <button id="back-to-list">← חזור לרשימה</button>
+    <div class="note-edit-container">
+        <!-- כותרת -->
+        <div class="form-group">
+            <label class="form-label">כותרת:</label>
+            <input type="text" id="note-title-edit" class="form-input" placeholder="כותרת">
+        </div>
+        <!-- תוכן -->
+        <div class="form-group">
+            <label class="form-label">תוכן:</label>
+            <textarea id="note-content-edit" class="form-textarea" placeholder="תוכן הפתק"></textarea>
+        </div>
+        <!-- צבע -->
+        <div class="form-group">
+            <label class="form-label">צבע:</label>
+            <input type="color" id="note-color-edit" class="form-input" value="#ffffff">
+        </div>
+        <div class="form-group">
+            <p class="note-date-text">עדכון אחרון: <span id="note-date"></span></p>
+        </div>
+        <button id="update-note" class="btn-save">עדכן ושמור</button>
+        <button id="delete-note" class="btn-delete">מחק פתק</button>
+    </div>
+</template>
+
+    <!-- טעינת הסקריפטים של ניהול האפליקציה, הרשת והשרתים -->
+    <script src="fajax.js"></script>
+    <script src="network.js"></script>
+    <script src="auth-server.js"></script>
+    <script src="notes-server.js"></script>
+    <script src="db-api.js"></script>
+    <script src="router.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
