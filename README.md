@@ -1,0 +1,1 @@
+End-to-end client–server application simulation built with HTML, CSS, and JavaScript. Implements a Single Page Application (SPA) with user authentication, simulated REST API requests, asynchronous FAJAX communication, separate client/server/database layers, and Local Storage-based data persistence.
